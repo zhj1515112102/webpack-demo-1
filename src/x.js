@@ -1,3 +1,3 @@
 import './x.css'
-import './y.css'
+import './y.scss'
 export default 'xxx'
