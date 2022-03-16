@@ -2,44 +2,19 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const base = require('./webpack.config.base.js')
+
 module.exports = {
-  mode: 'development',
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index.[contenthash].js',
-  },
+  ...base,
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
   },
-  plugins: [new HtmlWebpackPlugin({
-    title: "My App",
-    template: 'src/assets/index.html',
-  }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
-      ignoreOrder: false,
-    }),
-  ],
   module: {
     rules: [
       {
-        // test: /\.css$/i,
-        // use: [MiniCssExtractPlugin.loader, "css-loader"],
-        // use: ["style-loader", "css-loader"],
-        test: /\.s[ac]ss$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('dart-sass')
-            },
-          },
-        ],
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
