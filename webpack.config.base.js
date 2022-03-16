@@ -29,6 +29,18 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.less$/i,
+        loader: [
+          'style-loader',
+          'css-loader',
+          'less-loader',
+        ],
+      },
+      {
+        test: /\.styl$/,
+        loader: ['style-loader','css-loader',"stylus-loader"], // 将 Stylus 文件编译为 CSS
+      },
     ],
   },
 };
